@@ -596,16 +596,16 @@
                 <p class="bubble-subtitle">Interactive Widget</p>
             </div>
 
-            <div class="bubble tbc" data-project="tbc3">
-                <span class="bubble-icon">🌙</span>
-                <h2 class="bubble-title">Coming Soon</h2>
-                <p class="bubble-subtitle">TBC</p>
+            <div class="bubble" data-project="greekmyth">
+                <span class="bubble-icon">🏛️</span>
+                <h2 class="bubble-title">Greek Mythology Origins</h2>
+                <p class="bubble-subtitle">Interactive Map</p>
             </div>
 
-            <div class="bubble tbc" data-project="tbc4">
+            <div class="bubble" data-project="horoscope">
                 <span class="bubble-icon">🔮</span>
-                <h2 class="bubble-title">Coming Soon</h2>
-                <p class="bubble-subtitle">TBC</p>
+                <h2 class="bubble-title">Horoscope Accuracy</h2>
+                <p class="bubble-subtitle">Community Tracker</p>
             </div>
         </div>
     </main>
@@ -657,8 +657,24 @@
                     { url: 'https://github.com/KriedF/Thought-Release', text: 'GitHub', primary: false }
                 ]
             },
-            tbc3: { tbc: true },
-            tbc4: { tbc: true }
+            greekmyth: {
+                icon: '🏛️',
+                title: 'Greek Mythology Origins',
+                description: 'An interactive map exploring the geographical origins of Greek mythological figures, with a focus on often-overlooked connections to Libya and North Africa. Backed by ancient sources like Herodotus and Diodorus Siculus.',
+                links: [
+                    { url: 'https://greek-mythology-origins.onrender.com', text: 'Explore', primary: true },
+                    { url: 'https://github.com/KriedF/Greek-Mythology-Origins', text: 'GitHub', primary: false }
+                ]
+            },
+            horoscope: {
+                icon: '🔮',
+                title: 'Horoscope Accuracy',
+                description: 'Get your daily horoscope and vote on whether it was actually relevant to your day. See community-wide stats to discover if horoscopes are accurate or just vague enough to feel true. (May take ~60 seconds to load)',
+                links: [
+                    { url: 'https://horoscope-accuracy.onrender.com', text: 'Try It', primary: true },
+                    { url: 'https://github.com/KriedF/Horoscope-Accuracy', text: 'GitHub', primary: false }
+                ]
+            }
         };
 
         function openModal(projectId) {
