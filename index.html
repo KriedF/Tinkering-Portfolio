@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fatima Kried | Creative Projects</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #faf8f5 0%, #f0ebe3 50%, #e8e0d5 100%);
+            font-family: 'Quicksand', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Subtle floating particles */
+        .particle {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: rgba(180, 160, 140, 0.3);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+            25% { transform: translateY(-30px) translateX(10px); opacity: 0.5; }
+            50% { transform: translateY(-20px) translateX(-10px); opacity: 0.3; }
+            75% { transform: translateY(-40px) translateX(5px); opacity: 0.4; }
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 60px 20px 20px;
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: #5a4a3a;
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #8a7a6a;
+            font-size: 1.1rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* Main Layout */
+        .main-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            padding: 40px 20px 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .bubbles-left,
+        .bubbles-right {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        /* About Section */
+        .about-section {
+            max-width: 400px;
+            flex-shrink: 0;
+        }
+
+        .about-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 35px 40px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 32px rgba(120, 100, 80, 0.08);
+            text-align: left;
+        }
+
+        .about-greeting {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: #5a4a3a;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .about-text {
+            color: #6a5a4a;
+            line-height: 1.8;
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        .about-text .highlight {
+            color: #5a4a3a;
+            font-style: italic;
+        }
+
+        .about-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .tag {
+            background: rgba(180, 160, 140, 0.15);
+            color: #6a5a4a;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+        }
+
+        
+        /* Individual Bubble */
+        .bubble {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow:
+                0 8px 32px rgba(120, 100, 80, 0.1),
+                inset 0 2px 20px rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 25px;
+        }
+
+        .bubble:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow:
+                0 20px 50px rgba(120, 100, 80, 0.15),
+                inset 0 2px 20px rgba(255, 255, 255, 0.6);
+            border-color: rgba(180, 160, 140, 0.4);
+        }
+
+        .bubble::before {
+            content: '';
+            position: absolute;
+            top: 15%;
+            left: 20%;
+            width: 30%;
+            height: 20%;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            filter: blur(8px);
+        }
+
+        .bubble-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .bubble-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            color: #5a4a3a;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .bubble-subtitle {
+            font-size: 0.75rem;
+            color: #9a8a7a;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        /* TBC Bubbles */
+        .bubble.tbc {
+            background: rgba(255, 255, 255, 0.4);
+            border: 1px dashed rgba(180, 160, 140, 0.4);
+        }
+
+        .bubble.tbc .bubble-title {
+            color: #a09080;
+        }
+
+        .bubble.tbc .bubble-subtitle {
+            color: #b0a090;
+            font-style: italic;
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(90, 74, 58, 0.3);
+            backdrop-filter: blur(8px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Modal Content */
+        .modal {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 24px;
+            padding: 40px;
+            max-width: 520px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.9) translateY(20px);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 20px 60px rgba(90, 74, 58, 0.2);
+            position: relative;
+        }
+
+        .modal-overlay.active .modal {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: rgba(180, 160, 140, 0.1);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: #8a7a6a;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-close:hover {
+            background: rgba(180, 160, 140, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .modal-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #5a4a3a;
+            margin-bottom: 12px;
+        }
+
+        .modal-description {
+            color: #7a6a5a;
+            line-height: 1.7;
+            margin-bottom: 24px;
+            font-weight: 300;
+        }
+
+        .modal-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .modal-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #d4c4b0 0%, #c4b4a0 100%);
+            color: #5a4a3a;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .modal-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(180, 160, 140, 0.3);
+        }
+
+        .modal-link.secondary {
+            background: rgba(180, 160, 140, 0.15);
+        }
+
+        .modal-tbc {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .modal-tbc p {
+            color: #9a8a7a;
+            font-style: italic;
+        }
+
+        /* Widget Preview Styles */
+        .widget-preview-container {
+            margin: 20px 0;
+        }
+
+        .widget-preview-label {
+            font-size: 0.75rem;
+            color: #9a8a7a;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .widget-previews {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .widget-card {
+            border-radius: 16px;
+            padding: 16px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* SpongeBob Theme */
+        .widget-spongebob {
+            background: linear-gradient(135deg, #FFE135 0%, #FFD700 100%);
+            border: 2px solid #E6C200;
+        }
+
+        .widget-spongebob .widget-character {
+            font-size: 1.8rem;
+        }
+
+        /* Arthur Theme */
+        .widget-arthur {
+            background: linear-gradient(135deg, #FFE4B5 0%, #DEB887 100%);
+            border: 2px solid #D2B48C;
+        }
+
+        /* Dexter Theme */
+        .widget-dexter {
+            background: linear-gradient(135deg, #E8E8E8 0%, #B0C4DE 100%);
+            border: 2px solid #87CEEB;
+        }
+
+        /* Rugrats Theme */
+        .widget-rugrats {
+            background: linear-gradient(135deg, #98D8C8 0%, #7EC8B8 100%);
+            border: 2px solid #5FB3A1;
+        }
+
+        .widget-character {
+            font-size: 1.5rem;
+            margin-bottom: 6px;
+        }
+
+        .widget-days {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #333;
+            line-height: 1;
+        }
+
+        .widget-label {
+            font-size: 0.65rem;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 4px;
+        }
+
+        .widget-text {
+            font-size: 0.7rem;
+            color: #444;
+            margin-top: 6px;
+            font-weight: 500;
+        }
+
+        .tech-badge {
+            display: inline-block;
+            background: rgba(180, 160, 140, 0.15);
+            color: #6a5a4a;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            margin: 4px 2px;
+        }
+
+        .tech-badges {
+            margin-top: 16px;
+            text-align: center;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 20px 60px;
+            color: #a09080;
+            font-size: 0.85rem;
+        }
+
+        .footer a {
+            color: #7a6a5a;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: #5a4a3a;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .main-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .bubbles-left,
+            .bubbles-right {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .about-section {
+                max-width: 500px;
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .bubble {
+                width: 130px;
+                height: 130px;
+                padding: 15px;
+            }
+
+            .bubble-icon {
+                font-size: 1.8rem;
+            }
+
+            .bubble-title {
+                font-size: 0.85rem;
+            }
+
+            .about-card {
+                padding: 25px 20px;
+            }
+
+            .widget-previews {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+
+            .modal {
+                padding: 30px 20px;
+            }
+        }
+
+        /* Subtle entrance animation */
+        .about-card {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .bubble {
+            animation: bubbleIn 0.6s ease-out backwards;
+        }
+
+        .bubble:nth-child(1) { animation-delay: 0.1s; }
+        .bubble:nth-child(2) { animation-delay: 0.2s; }
+        .bubble:nth-child(3) { animation-delay: 0.3s; }
+        .bubble:nth-child(4) { animation-delay: 0.4s; }
+        .bubble:nth-child(5) { animation-delay: 0.5s; }
+        .bubble:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bubbleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating particles -->
+    <div class="particle" style="top: 10%; left: 15%; animation-delay: 0s;"></div>
+    <div class="particle" style="top: 20%; left: 80%; animation-delay: 3s;"></div>
+    <div class="particle" style="top: 60%; left: 10%; animation-delay: 6s;"></div>
+    <div class="particle" style="top: 70%; left: 85%; animation-delay: 9s;"></div>
+    <div class="particle" style="top: 40%; left: 50%; animation-delay: 12s;"></div>
+    <div class="particle" style="top: 85%; left: 30%; animation-delay: 15s;"></div>
+
+    <header class="header">
+        <h1>Fatima Kried</h1>
+        <p>maker of things, asker of questions</p>
+    </header>
+
+    <main class="main-content">
+        <!-- Left Bubbles -->
+        <div class="bubbles-left">
+            <div class="bubble" data-project="thinking">
+                <span class="bubble-icon">💭</span>
+                <h2 class="bubble-title">Thinking of You</h2>
+                <p class="bubble-subtitle">Interactive Widget</p>
+            </div>
+
+            <div class="bubble" data-project="dayssince">
+                <span class="bubble-icon">📋</span>
+                <h2 class="bubble-title">Days Since</h2>
+                <p class="bubble-subtitle">Android App</p>
+            </div>
+
+            <div class="bubble" data-project="skillthreads">
+                <span class="bubble-icon">🧵</span>
+                <h2 class="bubble-title">Skill Threads</h2>
+                <p class="bubble-subtitle">Early Stage</p>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <section class="about-section">
+            <div class="about-card">
+                <p class="about-greeting">Hey there! 👋</p>
+                <p class="about-text">
+                    I'm a <span class="highlight">UX researcher</span> at TD Bank, and before that I got to work on shows like Money Heist & Élite at Netflix. Psychology grad, forever curious about what makes people tick.
+                    <br><br>
+                    Outside of work, I like to build things. These projects are where I play: part learning, part fun, part "can I actually make this?"
+                </p>
+                <div class="about-tags">
+                    <span class="tag">Toronto 🍁</span>
+                    <span class="tag">ex-London</span>
+                    <span class="tag">psychology nerd</span>
+                    <span class="tag">python dabbler</span>
+                    <span class="tag">curious human</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Right Bubbles -->
+        <div class="bubbles-right">
+            <div class="bubble tbc" data-project="tbc2">
+                <span class="bubble-icon">🌸</span>
+                <h2 class="bubble-title">Coming Soon</h2>
+                <p class="bubble-subtitle">TBC</p>
+            </div>
+
+            <div class="bubble tbc" data-project="tbc3">
+                <span class="bubble-icon">🌙</span>
+                <h2 class="bubble-title">Coming Soon</h2>
+                <p class="bubble-subtitle">TBC</p>
+            </div>
+
+            <div class="bubble tbc" data-project="tbc4">
+                <span class="bubble-icon">🔮</span>
+                <h2 class="bubble-title">Coming Soon</h2>
+                <p class="bubble-subtitle">TBC</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>made with curiosity & late nights ☕</p>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="modalContent">
+            <button class="modal-close" onclick="closeModal()">×</button>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script>
+        const projects = {
+            thinking: {
+                icon: '💭',
+                title: 'Thinking of You',
+                description: 'A little widget that lets you send a gentle nudge to someone you care about—a quiet way to say "hey, you crossed my mind today." Sometimes the smallest gestures mean the most.',
+                links: [
+                    { url: 'https://thinking-of-you-widget-8r1j.onrender.com', text: 'View Live', primary: true }
+                ]
+            },
+            dayssince: {
+                icon: '📋',
+                title: 'Days Since',
+                description: 'Remember those "Days Since Last Incident" signs in cartoons? This is that, but for your life. Track how long since you last lost your keys, forgot to water a plant, or had a truly embarrassing moment. It\'s silly, it\'s fun, and honestly? Kind of motivating.',
+                hasPreview: true
+            },
+            skillthreads: {
+                icon: '🧵',
+                title: 'Skill Threads',
+                description: 'A tool that helps you explore career paths based on your skills. Enter what you\'re good at, and discover roles and directions you might not have considered. (May take ~60 seconds to load)',
+                links: [
+                    { url: 'https://skill-threads.onrender.com', text: 'Try It', primary: true }
+                ]
+            },
+            tbc2: { tbc: true },
+            tbc3: { tbc: true },
+            tbc4: { tbc: true }
+        };
+
+        function openModal(projectId) {
+            const project = projects[projectId];
+            const modalBody = document.getElementById('modalBody');
+
+            if (project.tbc) {
+                modalBody.innerHTML = `
+                    <div class="modal-tbc">
+                        <span class="modal-icon">🌟</span>
+                        <h3 class="modal-title">Something's Brewing</h3>
+                        <p>This space is waiting for its moment. Check back soon!</p>
+                    </div>
+                `;
+            } else if (project.concept) {
+                // Concept stage project
+                modalBody.innerHTML = `
+                    <span class="modal-icon">${project.icon}</span>
+                    <h3 class="modal-title">${project.title}</h3>
+                    <p class="modal-description">${project.description}</p>
+                    <div class="tech-badges">
+                        <span class="tech-badge">✨ In Concept</span>
+                    </div>
+                `;
+            } else if (project.hasPreview) {
+                // Days Since with widget preview
+                modalBody.innerHTML = `
+                    <span class="modal-icon">${project.icon}</span>
+                    <h3 class="modal-title">${project.title}</h3>
+                    <p class="modal-description">${project.description}</p>
+
+                    <div class="widget-preview-container">
+                        <p class="widget-preview-label">Choose your nostalgia ✨</p>
+                        <div class="widget-previews">
+                            <div class="widget-card widget-spongebob">
+                                <div class="widget-character">🧽</div>
+                                <div class="widget-days">42</div>
+                                <div class="widget-label">days since</div>
+                                <div class="widget-text">lost my keys</div>
+                            </div>
+                            <div class="widget-card widget-arthur">
+                                <div class="widget-character">🐻</div>
+                                <div class="widget-days">7</div>
+                                <div class="widget-label">days since</div>
+                                <div class="widget-text">watered plants</div>
+                            </div>
+                            <div class="widget-card widget-dexter">
+                                <div class="widget-character">🔬</div>
+                                <div class="widget-days">3</div>
+                                <div class="widget-label">days since</div>
+                                <div class="widget-text">hit snooze 5x</div>
+                            </div>
+                            <div class="widget-card widget-rugrats">
+                                <div class="widget-character">👶</div>
+                                <div class="widget-days">0</div>
+                                <div class="widget-label">days since</div>
+                                <div class="widget-text">said "oops"</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tech-badges">
+                        <span class="tech-badge">Android</span>
+                        <span class="tech-badge">Kotlin</span>
+                        <span class="tech-badge">Home Widget</span>
+                    </div>
+                `;
+            } else {
+                const linksHtml = project.links ? project.links.map(link =>
+                    `<a href="${link.url}" target="_blank" rel="noopener noreferrer" class="modal-link ${link.primary ? '' : 'secondary'}">${link.text} →</a>`
+                ).join('') : '';
+
+                modalBody.innerHTML = `
+                    <span class="modal-icon">${project.icon}</span>
+                    <h3 class="modal-title">${project.title}</h3>
+                    <p class="modal-description">${project.description}</p>
+                    ${linksHtml ? `<div class="modal-links">${linksHtml}</div>` : ''}
+                `;
+            }
+
+            document.getElementById('modalOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Event listeners
+        document.querySelectorAll('.bubble').forEach(bubble => {
+            bubble.addEventListener('click', () => {
+                openModal(bubble.dataset.project);
+            });
+        });
+
+        document.getElementById('modalOverlay').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
+                closeModal();
+            }
+        });
+
+        // Close on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
+</body>
+</html>

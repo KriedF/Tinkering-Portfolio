@@ -1,0 +1,28 @@
+# Fatima Kried - Creative Portfolio
+
+A personal portfolio showcasing my creative side projects.
+
+## Deploy to Render
+
+1. Push this repo to GitHub
+2. Go to [render.com](https://render.com) and sign in
+3. Click **New** → **Static Site**
+4. Connect your GitHub repo
+5. Settings will auto-populate from `render.yaml`
+6. Click **Create Static Site**
+
+Your site will be live at `https://your-site-name.onrender.com`
+
+## Local Preview
+
+Just open `index.html` in your browser.
+
+## Projects Featured
+
+- **Thinking of You** - Interactive widget for sending gentle nudges
+- **Days Since** - Android app inspired by cartoon incident signs
+- **Thought Threads** - Brainstorming tool (in concept)
+
+---
+
+Made with curiosity & late nights ☕
